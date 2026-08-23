@@ -16,11 +16,11 @@ const year = new Date().getFullYear()
       <p class="pv-footer-tagline">Psicologia • Neuropsicologia</p>
 
       <nav class="pv-footer-nav" aria-label="Navegação do rodapé">
+        <a href="#espaco">O Espaço</a>
         <a href="#sobre">Sobre</a>
+        <a href="#fundadoras">Fundadoras</a>
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
-        <a href="#fundadoras">Fundadoras</a>
-        <a href="#espaco">O Espaço</a>
         <a href="#contato">Contato</a>
       </nav>
 

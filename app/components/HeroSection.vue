@@ -4,9 +4,20 @@ const videoEl = ref<HTMLVideoElement | null>(null)
 
 onMounted(() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (videoEl.value) videoEl.value.muted = true
-  if (reduceMotion) videoEl.value?.pause()
-  else videoEl.value?.play().catch(() => {})
+  const el = videoEl.value
+  if (!el) return
+  el.muted = true
+  if (reduceMotion) {
+    el.pause()
+    return
+  }
+  // Em alguns navegadores mobile, chamar .play() antes do vídeo ter dados
+  // carregados é silenciosamente ignorado — reforça a tentativa assim que
+  // houver dado suficiente pra tocar.
+  const tryPlay = () => el.play().catch(() => {})
+  tryPlay()
+  el.addEventListener('loadeddata', tryPlay, { once: true })
+  el.addEventListener('canplay', tryPlay, { once: true })
 })
 </script>
 

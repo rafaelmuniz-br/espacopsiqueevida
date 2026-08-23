@@ -102,7 +102,7 @@ const emit = defineEmits<{ toggle: [] }>()
 .pv-founder-expand {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: grid-template-rows 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .pv-founder-expand.is-open {
   grid-template-rows: 1fr;

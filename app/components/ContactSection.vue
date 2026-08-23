@@ -16,6 +16,7 @@ const profiles = [
       class="pv-contact-bg"
       poster="/fotos/consultorio2-poster.jpg"
       preload="none"
+      autoplay
       muted
       loop
       playsinline

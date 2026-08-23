@@ -29,7 +29,7 @@ const steps = [
 </script>
 
 <template>
-  <section id="avaliacao-neuropsicologica">
+  <section id="avaliacao-neuropsicologica" class="pv-section-alt">
     <div class="pv-container">
       <div class="pv-how-head">
         <p class="pv-kicker pv-reveal" v-reveal>Passo a passo</p>

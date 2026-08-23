@@ -3,13 +3,13 @@
     <SiteHeader />
     <main>
       <HeroSection />
+      <SpaceGallerySection />
       <AboutSection />
+      <FoundersSection />
+      <DifferentiationSection />
       <ServicesSection />
       <HowItWorksSection />
-      <DifferentiationSection />
       <NeuroEvaluationSection />
-      <FoundersSection />
-      <SpaceGallerySection />
       <ContactSection />
     </main>
     <SiteFooter />

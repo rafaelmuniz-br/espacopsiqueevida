@@ -59,6 +59,13 @@
   transform: scale(1.03);
 }
 
+@media (max-width: 859px) {
+  .pv-about-media img {
+    max-width: 65%;
+    margin: 0 auto;
+  }
+}
+
 .pv-about-title {
   font-size: clamp(1.8rem, 3.4vw, 2.5rem);
   margin-bottom: 1.5rem;

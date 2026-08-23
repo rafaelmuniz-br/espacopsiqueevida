@@ -17,7 +17,15 @@ export default defineNuxtPlugin((nuxtApp) => {
               el.src = el.dataset.src
               el.load()
             }
-            if (!reduceMotion) el.play().catch(() => {})
+            if (!reduceMotion) {
+              // Em alguns navegadores mobile, chamar .play() antes do vídeo
+              // ter dados carregados é silenciosamente ignorado — reforça a
+              // tentativa assim que houver dado suficiente pra tocar.
+              const tryPlay = () => el.play().catch(() => {})
+              tryPlay()
+              el.addEventListener('loadeddata', tryPlay, { once: true })
+              el.addEventListener('canplay', tryPlay, { once: true })
+            }
           } else {
             el.pause()
           }

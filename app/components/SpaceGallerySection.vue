@@ -50,6 +50,7 @@ const videos = [
             v-lazy-video="v.src"
             :poster="v.poster"
             preload="none"
+            autoplay
             muted
             loop
             playsinline

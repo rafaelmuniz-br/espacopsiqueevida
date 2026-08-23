@@ -4,11 +4,11 @@ const isOpen = ref(false)
 const isScrolled = ref(false)
 
 const links = [
+  { href: '#espaco', label: 'O Espaço' },
   { href: '#sobre', label: 'Sobre' },
+  { href: '#fundadoras', label: 'Fundadoras' },
   { href: '#servicos', label: 'Serviços' },
   { href: '#como-funciona', label: 'Como funciona' },
-  { href: '#fundadoras', label: 'Fundadoras' },
-  { href: '#espaco', label: 'O Espaço' },
   { href: '#contato', label: 'Contato' },
 ]
 

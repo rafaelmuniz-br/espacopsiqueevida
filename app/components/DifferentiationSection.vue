@@ -18,7 +18,7 @@ const neuroTags = [
 </script>
 
 <template>
-  <section id="diferenciais" class="pv-section-alt">
+  <section id="diferenciais">
     <div class="pv-container">
       <div class="pv-diff-head">
         <p class="pv-kicker pv-reveal" v-reveal>Entenda a diferença</p>
