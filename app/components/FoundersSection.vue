@@ -23,6 +23,9 @@ const founders = [
     instagram: 'https://www.instagram.com/vivianegatispsi',
   },
 ]
+
+const openStates = ref(founders.map(() => false))
+const anyOpen = computed(() => openStates.value.some(Boolean))
 </script>
 
 <template>
@@ -40,8 +43,15 @@ const founders = [
         </p>
       </div>
 
-      <div class="pv-founders-grid">
-        <FounderCard v-for="(f, i) in founders" :key="f.name" v-bind="f" :delay="i * 130" />
+      <div class="pv-founders-grid" :class="{ 'has-open': anyOpen }">
+        <FounderCard
+          v-for="(f, i) in founders"
+          :key="f.name"
+          v-bind="f"
+          :delay="i * 130"
+          :open="openStates[i]"
+          @toggle="openStates[i] = !openStates[i]"
+        />
       </div>
     </div>
   </section>
@@ -67,6 +77,9 @@ const founders = [
 .pv-founders-grid {
   display: grid;
   gap: 1.75rem;
+  align-items: stretch;
+}
+.pv-founders-grid.has-open {
   align-items: start;
 }
 

@@ -9,9 +9,10 @@ defineProps<{
   formation: string[]
   instagram: string
   delay?: number
+  open: boolean
 }>()
 
-const isOpen = ref(false)
+const emit = defineEmits<{ toggle: [] }>()
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const isOpen = ref(false)
 
       <p class="pv-founder-summary">{{ summary }}</p>
 
-      <div class="pv-founder-expand" :class="{ 'is-open': isOpen }">
+      <div class="pv-founder-expand" :class="{ 'is-open': open }">
         <div class="pv-founder-expand-inner">
           <p class="pv-founder-bio">{{ bio }}</p>
           <ul class="pv-founder-formation">
@@ -40,9 +41,9 @@ const isOpen = ref(false)
       </div>
 
       <div class="pv-founder-actions">
-        <button type="button" class="pv-founder-toggle" @click="isOpen = !isOpen">
-          {{ isOpen ? 'Ler menos' : 'Ler mais' }}
-          <svg viewBox="0 0 20 20" :class="{ 'is-open': isOpen }" fill="none" stroke="currentColor" stroke-width="1.8">
+        <button type="button" class="pv-founder-toggle" @click="emit('toggle')">
+          {{ open ? 'Ler menos' : 'Ler mais' }}
+          <svg viewBox="0 0 20 20" :class="{ 'is-open': open }" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M5 7.5 10 12.5 15 7.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
