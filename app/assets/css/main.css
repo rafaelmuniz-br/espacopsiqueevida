@@ -1,0 +1,224 @@
+/* Espaço Psique e Vida — identidade extraída do Instagram @espacopsiqueevida:
+   fundo rosé/creme aconchegante, textos em marrom terroso e terracota, um
+   serif elegante para títulos + um script cursivo para destaques (igual às
+   artes do próprio perfil), tom acolhedor e "fofo". */
+
+:root {
+  --pv-bg: #fbf4ee;
+  --pv-bg-alt: #f3e3d3;
+  --pv-surface: #ffffff;
+  --pv-ink: #4a3527;
+  --pv-ink-soft: #8a6f5c;
+  --pv-accent: #b15e3b;
+  --pv-accent-light: #c9825a;
+  --pv-accent-dark: #8a4224;
+  --pv-line: #e9d7c6;
+  --pv-shadow-sm: 0 1px 3px rgba(122, 78, 46, 0.08);
+  --pv-shadow-md: 0 12px 34px rgba(122, 78, 46, 0.14);
+  --pv-radius: 20px;
+
+  --pv-font-display: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
+  --pv-font-script: 'Dancing Script Variable', 'Dancing Script', cursive;
+  --pv-font-body: 'Nunito Sans Variable', 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--pv-font-body);
+  background: var(--pv-bg);
+  color: var(--pv-ink);
+  -webkit-font-smoothing: antialiased;
+  animation: pv-page-fade-in 0.6s ease;
+}
+@keyframes pv-page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.15;
+  font-family: var(--pv-font-display);
+  font-weight: 600;
+  color: var(--pv-ink);
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+.pv-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.pv-script {
+  font-family: var(--pv-font-script);
+  color: var(--pv-accent);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.pv-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--pv-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pv-accent);
+  margin-bottom: 0.9rem;
+}
+.pv-kicker::before {
+  content: '♥';
+  font-size: 0.85rem;
+}
+
+section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+}
+
+.pv-section-alt {
+  background: var(--pv-bg-alt);
+}
+
+/* ============================================================
+   Botões
+   ============================================================ */
+.pv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.9rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.pv-btn:hover {
+  transform: translateY(-2px);
+}
+.pv-btn:active {
+  transform: scale(0.96);
+  transition-duration: 0.08s;
+}
+.pv-btn-primary {
+  background: var(--pv-accent);
+  color: #fff8f2;
+  box-shadow: var(--pv-shadow-sm);
+}
+.pv-btn-primary:hover {
+  background: var(--pv-accent-dark);
+  box-shadow: var(--pv-shadow-md);
+}
+.pv-btn-outline {
+  background: transparent;
+  border-color: var(--pv-accent);
+  color: var(--pv-accent-dark);
+}
+.pv-btn-outline:hover {
+  background: rgba(177, 94, 59, 0.08);
+}
+.pv-btn-ghost {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff8f2;
+}
+.pv-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* ============================================================
+   Scroll reveal (ver plugins/reveal.ts) — stagger por item via delay
+   ============================================================ */
+.pv-reveal {
+  opacity: 0;
+  transform: translateY(26px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pv-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pv-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.pv-card {
+  background: var(--pv-surface);
+  border-radius: var(--pv-radius);
+  border: 1px solid var(--pv-line);
+  box-shadow: var(--pv-shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.pv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--pv-shadow-md);
+  border-color: var(--pv-accent-light);
+}
+
+/* ============================================================
+   Responsivo
+   ============================================================ */
+@media (max-width: 640px) {
+  .pv-container {
+    padding: 0 1.25rem;
+  }
+  section {
+    padding: 3.25rem 0;
+  }
+}

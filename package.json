@@ -1,0 +1,20 @@
+{
+  "name": "espaco-psique-e-vida",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@fontsource-variable/dancing-script": "^5.3.0",
+    "@fontsource-variable/nunito-sans": "^5.2.5",
+    "@fontsource-variable/playfair-display": "^5.2.5",
+    "nuxt": "^4.4.8",
+    "vue": "^3.5.39",
+    "vue-router": "^5.1.0"
+  }
+}
