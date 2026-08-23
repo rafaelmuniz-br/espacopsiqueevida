@@ -59,14 +59,17 @@ onUnmounted(() => {
       </button>
 
       <button
+        type="button"
         class="pv-menu-btn"
         :class="{ 'is-open': isOpen }"
         aria-label="Abrir menu"
         @click="isOpen = !isOpen"
       >
-        <span />
-        <span />
-        <span />
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line class="pv-menu-bar pv-menu-bar-1" x1="3" y1="6" x2="21" y2="6" />
+          <line class="pv-menu-bar pv-menu-bar-2" x1="3" y1="12" x2="21" y2="12" />
+          <line class="pv-menu-bar pv-menu-bar-3" x1="3" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
     </div>
 
@@ -178,31 +181,36 @@ onUnmounted(() => {
 
 .pv-menu-btn {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 5px;
   width: 2.4rem;
   height: 2.4rem;
   border: none;
   background: transparent;
+  color: var(--pv-ink);
   cursor: pointer;
   padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
-.pv-menu-btn span {
-  display: block;
-  height: 2px;
-  background: var(--pv-ink);
-  border-radius: 2px;
+.pv-menu-btn svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  overflow: visible;
+}
+.pv-menu-bar {
+  transform-origin: 12px 12px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
-.pv-menu-btn.is-open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+.pv-menu-btn.is-open .pv-menu-bar-1 {
+  transform: translateY(6px) rotate(45deg);
 }
-.pv-menu-btn.is-open span:nth-child(2) {
+.pv-menu-btn.is-open .pv-menu-bar-2 {
   opacity: 0;
 }
-.pv-menu-btn.is-open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.pv-menu-btn.is-open .pv-menu-bar-3 {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .pv-mobile-panel {

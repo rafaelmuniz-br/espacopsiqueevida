@@ -6,8 +6,6 @@
 export default defineNuxtPlugin((nuxtApp) => {
   let observer: IntersectionObserver | undefined
   if (import.meta.client) {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
     observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -17,15 +15,17 @@ export default defineNuxtPlugin((nuxtApp) => {
               el.src = el.dataset.src
               el.load()
             }
-            if (!reduceMotion) {
-              // Em alguns navegadores mobile, chamar .play() antes do vídeo
-              // ter dados carregados é silenciosamente ignorado — reforça a
-              // tentativa assim que houver dado suficiente pra tocar.
-              const tryPlay = () => el.play().catch(() => {})
-              tryPlay()
-              el.addEventListener('loadeddata', tryPlay, { once: true })
-              el.addEventListener('canplay', tryPlay, { once: true })
-            }
+            // Vídeo de fundo decorativo (mudo, em loop) — toca sempre,
+            // mesmo com "Reduzir movimento" ativado. O Safari (iOS/macOS)
+            // suprime o atributo HTML autoplay nesse caso, mas ainda
+            // respeita uma chamada explícita de .play() via JS. Em alguns
+            // navegadores mobile, chamar .play() antes do vídeo ter dados
+            // carregados também é silenciosamente ignorado — reforça a
+            // tentativa assim que houver dado suficiente pra tocar.
+            const tryPlay = () => el.play().catch(() => {})
+            tryPlay()
+            el.addEventListener('loadeddata', tryPlay, { once: true })
+            el.addEventListener('canplay', tryPlay, { once: true })
           } else {
             el.pause()
           }

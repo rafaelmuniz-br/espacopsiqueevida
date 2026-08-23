@@ -3,15 +3,14 @@ const { openContactModal } = useContactModal()
 const videoEl = ref<HTMLVideoElement | null>(null)
 
 onMounted(() => {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const el = videoEl.value
   if (!el) return
   el.muted = true
-  if (reduceMotion) {
-    el.pause()
-    return
-  }
-  // Em alguns navegadores mobile, chamar .play() antes do vídeo ter dados
+  // Vídeo de fundo decorativo (mudo, em loop) — toca sempre, mesmo com
+  // "Reduzir movimento" ativado. O Safari (iOS/macOS) suprime o atributo
+  // HTML autoplay nesse caso, mas ainda respeita uma chamada explícita de
+  // .play() via JS, então é isso que garante o autoplay lá também. Em
+  // alguns navegadores mobile, chamar .play() antes do vídeo ter dados
   // carregados é silenciosamente ignorado — reforça a tentativa assim que
   // houver dado suficiente pra tocar.
   const tryPlay = () => el.play().catch(() => {})
