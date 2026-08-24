@@ -49,6 +49,14 @@
   align-items: center;
 }
 
+/* Só no mobile: texto em cima, imagem da escultura embaixo. */
+.pv-about-media {
+  order: 2;
+}
+.pv-about-copy {
+  order: 1;
+}
+
 .pv-about-media img {
   width: 100%;
   height: auto;
@@ -106,6 +114,12 @@
   .pv-about-grid {
     grid-template-columns: 0.85fr 1.15fr;
     gap: 4rem;
+  }
+  .pv-about-media {
+    order: 1;
+  }
+  .pv-about-copy {
+    order: 2;
   }
 }
 </style>

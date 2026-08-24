@@ -28,6 +28,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Compensa a altura do header fixo (4.75rem) pra o scroll de âncora não
+     parar com o título da seção escondido atrás do nav. */
+  scroll-padding-top: 4.75rem;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
