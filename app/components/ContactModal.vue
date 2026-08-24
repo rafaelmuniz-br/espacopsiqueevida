@@ -148,6 +148,7 @@ watch(isOpen, async (open) => {
             <label class="pv-field">
               <span>Período</span>
               <select v-model="form.periodo">
+                <option value="" disabled>Selecione uma opção</option>
                 <option v-for="p in periodos" :key="p" :value="p">{{ p }}</option>
               </select>
             </label>
@@ -182,7 +183,7 @@ watch(isOpen, async (open) => {
   width: min(94vw, 34rem);
   max-height: min(90vh, 46rem);
   overflow-y: auto;
-  padding: 2rem 1.75rem;
+  padding: 2.75rem 1.75rem 2rem;
 }
 
 .pv-modal-title {
@@ -341,7 +342,7 @@ watch(isOpen, async (open) => {
     border-radius: 0;
     border: none;
     box-shadow: none;
-    padding: max(1.5rem, env(safe-area-inset-top)) 1.25rem
+    padding: max(2.5rem, env(safe-area-inset-top)) 1.25rem
       max(1.5rem, env(safe-area-inset-bottom));
   }
 }
