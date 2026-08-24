@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import { buildWhatsappMessage, buildWhatsappUrl, type ContactFormData } from '~/utils/whatsapp'
-import { WHATSAPP_NUMBER } from '~/composables/useContactModal'
+import { ATENDIMENTO_OPTIONS, whatsappNumberFor } from '~/composables/useContactModal'
 
 const { isOpen, closeContactModal } = useContactModal()
 
 const panelEl = ref<HTMLElement | null>(null)
 const firstFieldEl = ref<HTMLInputElement | null>(null)
 
-const servicos = [
-  'Avaliação Neuropsicológica',
-  'Psicologia',
-  'Acompanhamento e Intervenção Neuropsicológica',
-  'Psicopedagogia',
-  'Não sei / gostaria de orientação',
-]
+const servicos = ATENDIMENTO_OPTIONS.map((o) => o.label)
 const diasSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
 const periodos = ['Sem preferência', 'Manhã', 'Tarde', 'Noite']
 
@@ -34,7 +28,8 @@ const form = reactive<ContactFormData>(blankForm())
 
 function handleSubmit() {
   const message = buildWhatsappMessage(form)
-  window.open(buildWhatsappUrl(WHATSAPP_NUMBER, message), '_blank', 'noopener')
+  const numero = whatsappNumberFor(form.tipoAtendimento)
+  window.open(buildWhatsappUrl(numero, message), '_blank', 'noopener')
   closeContactModal()
 }
 

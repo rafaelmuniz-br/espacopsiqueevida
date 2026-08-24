@@ -50,7 +50,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="pv-header" :class="{ 'is-scrolled': isScrolled }">
+  <header class="pv-header" :class="{ 'is-scrolled': isScrolled, 'is-menu-open': isOpen }">
     <div class="pv-container pv-header-inner">
       <a href="#topo" class="pv-logo">
         <img src="/marca/logo-icon.webp" alt="" class="pv-logo-icon" />
@@ -108,6 +108,12 @@ onUnmounted(() => {
   backdrop-filter: blur(10px);
   border-bottom-color: var(--pv-line);
   box-shadow: var(--pv-shadow-sm);
+}
+.pv-header.is-menu-open {
+  background: var(--pv-bg);
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
 }
 
 .pv-header-inner {

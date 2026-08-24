@@ -1,6 +1,20 @@
-// Número de WhatsApp da clínica — ainda não existe, o cliente vai enviar em
-// breve. Placeholder óbvio (DDD 71 = Salvador) até ser substituído.
-export const WHATSAPP_NUMBER = '5571900000000'
+export interface AtendimentoOption {
+  label: string
+  numero: string
+}
+
+// Cada tipo de atendimento é roteado pro WhatsApp da profissional
+// responsável: Joana Darc (Neuropsicóloga) ou Viviane Gatis (Psicopedagoga).
+// Quem não sabe qual escolher cai com a Joana, que faz a triagem inicial.
+export const ATENDIMENTO_OPTIONS: AtendimentoOption[] = [
+  { label: 'Neuropsicóloga', numero: '5571988067842' },
+  { label: 'Psicopedagoga', numero: '5571987275302' },
+  { label: 'Não sei / gostaria de orientação', numero: '5571988067842' },
+]
+
+export function whatsappNumberFor(tipoAtendimento: string): string {
+  return ATENDIMENTO_OPTIONS.find((o) => o.label === tipoAtendimento)?.numero ?? ATENDIMENTO_OPTIONS[0].numero
+}
 
 // Referência de DOM para devolver o foco ao fechar — fica fora do useState
 // de propósito: HTMLElement não é serializável no payload SSR e só existe
