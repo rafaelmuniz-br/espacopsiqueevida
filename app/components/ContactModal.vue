@@ -330,9 +330,19 @@ watch(isOpen, async (open) => {
 }
 
 @media (max-width: 640px) {
+  .pv-modal-overlay {
+    padding: 0;
+  }
   .pv-modal-panel {
-    padding: 1.5rem 1.25rem;
-    max-height: 92vh;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: max(1.5rem, env(safe-area-inset-top)) 1.25rem
+      max(1.5rem, env(safe-area-inset-bottom));
   }
 }
 </style>
