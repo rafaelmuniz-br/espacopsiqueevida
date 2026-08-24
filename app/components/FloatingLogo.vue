@@ -23,7 +23,7 @@ const { openContactModal } = useContactModal()
   height: 3.6rem;
   border-radius: 999px;
   border: none;
-  background: var(--pv-accent);
+  background: #fbf4eeeb;
   box-shadow: var(--pv-shadow-md);
   display: flex;
   align-items: center;
