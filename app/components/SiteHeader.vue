@@ -20,13 +20,23 @@ function onScroll() {
   isScrolled.value = window.scrollY > 12
 }
 
-let previousBodyOverflow = ''
+// overflow:hidden no body não trava scroll por toque no Safari iOS — a
+// página continua rolando atrás do menu. Trava de verdade fixando o body
+// no lugar (técnica padrão pra iOS) e restaura a posição da rolagem ao fechar.
+let lockedScrollY = 0
 watch(isOpen, (open) => {
   if (open) {
-    previousBodyOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    lockedScrollY = window.scrollY
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${lockedScrollY}px`
+    document.body.style.left = '0'
+    document.body.style.right = '0'
   } else {
-    document.body.style.overflow = previousBodyOverflow
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.left = ''
+    document.body.style.right = ''
+    window.scrollTo(0, lockedScrollY)
   }
 })
 
@@ -65,11 +75,9 @@ onUnmounted(() => {
         aria-label="Abrir menu"
         @click="isOpen = !isOpen"
       >
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line class="pv-menu-bar pv-menu-bar-1" x1="3" y1="6" x2="21" y2="6" />
-          <line class="pv-menu-bar pv-menu-bar-2" x1="3" y1="12" x2="21" y2="12" />
-          <line class="pv-menu-bar pv-menu-bar-3" x1="3" y1="18" x2="21" y2="18" />
-        </svg>
+        <span class="pv-menu-bar pv-menu-bar-1" aria-hidden="true" />
+        <span class="pv-menu-bar pv-menu-bar-2" aria-hidden="true" />
+        <span class="pv-menu-bar pv-menu-bar-3" aria-hidden="true" />
       </button>
     </div>
 
@@ -180,37 +188,44 @@ onUnmounted(() => {
 }
 
 .pv-menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   width: 2.4rem;
   height: 2.4rem;
   border: none;
   background: transparent;
-  color: var(--pv-ink);
   cursor: pointer;
   padding: 0;
   -webkit-appearance: none;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-}
-.pv-menu-btn svg {
-  width: 1.6rem;
-  height: 1.6rem;
-  overflow: visible;
+  touch-action: manipulation;
 }
 .pv-menu-bar {
-  transform-origin: 12px 12px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.5rem;
+  height: 2px;
+  margin-left: -0.75rem;
+  margin-top: -1px;
+  background: var(--pv-ink);
+  border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
+.pv-menu-bar-1 {
+  transform: translateY(-7px);
+}
+.pv-menu-bar-3 {
+  transform: translateY(7px);
+}
 .pv-menu-btn.is-open .pv-menu-bar-1 {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(0) rotate(45deg);
 }
 .pv-menu-btn.is-open .pv-menu-bar-2 {
   opacity: 0;
 }
 .pv-menu-btn.is-open .pv-menu-bar-3 {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(0) rotate(-45deg);
 }
 
 .pv-mobile-panel {
@@ -247,6 +262,7 @@ onUnmounted(() => {
   font-size: 1.2rem;
   padding: 0.9rem 0;
   border-bottom: 1px solid var(--pv-line);
+  touch-action: manipulation;
 }
 .pv-mobile-panel .pv-btn {
   margin-top: 1.25rem;

@@ -134,6 +134,7 @@ const videos = [
   box-shadow: var(--pv-shadow-md);
 }
 .pv-gallery-item video {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
