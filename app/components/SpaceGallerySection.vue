@@ -26,7 +26,7 @@ const videos = [
           </svg>
           <p>
             <strong>Ed. Elite Comercial</strong> — Rua Dr. José Peroba, nº 325, 6º andar
-            <br />Salvador – BA
+            <br />STIEP, Salvador – BA
           </p>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Ed.+Elite+Comercial,+Rua+Dr.+Jos%C3%A9+Peroba,+325,+Salvador+-+BA"

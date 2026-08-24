@@ -16,14 +16,14 @@ const { openContactModal } = useContactModal()
 <style scoped>
 .pv-logo-float {
   position: fixed;
-  left: 1.25rem;
+  right: 1.25rem;
   bottom: 1.25rem;
   z-index: 60;
   width: 3.6rem;
   height: 3.6rem;
   border-radius: 999px;
   border: none;
-  background: var(--pv-surface);
+  background: var(--pv-accent);
   box-shadow: var(--pv-shadow-md);
   display: flex;
   align-items: center;
