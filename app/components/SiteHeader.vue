@@ -119,6 +119,7 @@ onUnmounted(() => {
 .pv-header-inner {
   display: flex;
   align-items: center;
+  min-height: 4.75rem;
   gap: 1.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
