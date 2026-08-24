@@ -1,11 +1,15 @@
 <script setup lang="ts">
 const { openContactModal } = useContactModal()
+const { isOpen: isMenuOpen } = useMobileMenu()
 </script>
 
 <template>
   <button
     type="button"
     class="pv-logo-float"
+    :class="{ 'is-hidden': isMenuOpen }"
+    :tabindex="isMenuOpen ? -1 : 0"
+    :aria-hidden="isMenuOpen"
     aria-label="Agendar atendimento"
     @click="openContactModal"
   >
@@ -34,13 +38,18 @@ const { openContactModal } = useContactModal()
   appearance: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.25s ease;
 }
 .pv-logo-float:hover {
   transform: translateY(-3px) scale(1.05);
 }
 .pv-logo-float:active {
   transform: scale(0.94);
+}
+.pv-logo-float.is-hidden {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
 }
 .pv-logo-float img {
   width: 100%;

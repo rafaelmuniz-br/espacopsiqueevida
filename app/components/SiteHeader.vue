@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { openContactModal } = useContactModal()
-const isOpen = ref(false)
+const { isOpen } = useMobileMenu()
 const isScrolled = ref(false)
 
 const links = [
