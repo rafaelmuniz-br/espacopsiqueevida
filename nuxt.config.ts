@@ -54,7 +54,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'netlify',
     prerender: {
-      routes: ['/'],
+      routes: ['/', '/politicas-e-termos'],
     },
   },
 })

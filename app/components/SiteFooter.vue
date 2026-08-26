@@ -5,13 +5,13 @@ const year = new Date().getFullYear()
 <template>
   <footer class="pv-footer">
     <div class="pv-container pv-footer-inner">
-      <a href="#topo" class="pv-logo">
+      <NuxtLink to="/#topo" class="pv-logo">
         <img src="/marca/logo-icon.webp" alt="" class="pv-logo-icon" />
         <span class="pv-logo-text">
           <span class="pv-logo-kicker">ESPAÇO</span>
           <span class="pv-logo-title">Psique <em>e</em> Vida</span>
         </span>
-      </a>
+      </NuxtLink>
 
       <p class="pv-footer-tagline">Psicologia • Neuropsicologia</p>
 
@@ -25,6 +25,10 @@ const year = new Date().getFullYear()
       </nav>
 
       <p class="pv-footer-copy">© {{ year }} Espaço Psique e Vida.</p>
+
+      <NuxtLink to="/politicas-e-termos" class="pv-footer-policy">
+        Políticas e Termos
+      </NuxtLink>
 
       <a
         href="https://wa.me/5571991055569?text=Ol%C3%A1%2C%20Rafael%21%20Vi%20o%20site%20do%20Espa%C3%A7o%20Psique%20e%20Vida%2C%20que%20voc%C3%AA%20desenvolveu%2C%20e%20gostaria%20de%20saber%20mais%20sobre%20um%20or%C3%A7amento%20para%20o%20meu%20projeto."
@@ -106,6 +110,15 @@ const year = new Date().getFullYear()
   font-size: 0.8rem;
   color: var(--pv-ink-soft);
   margin-top: 0.5rem;
+}
+.pv-footer-policy {
+  font-size: 0.8rem;
+  color: var(--pv-ink-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.pv-footer-policy:hover {
+  color: var(--pv-accent);
 }
 .pv-footer-credit {
   font-size: 0.76rem;

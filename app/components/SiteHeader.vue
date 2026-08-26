@@ -52,13 +52,13 @@ onUnmounted(() => {
 <template>
   <header class="pv-header" :class="{ 'is-scrolled': isScrolled, 'is-menu-open': isOpen }">
     <div class="pv-container pv-header-inner">
-      <a href="#topo" class="pv-logo">
+      <NuxtLink to="/#topo" class="pv-logo">
         <img src="/marca/logo-icon.webp" alt="" class="pv-logo-icon" />
         <span class="pv-logo-text">
           <span class="pv-logo-kicker">ESPAÇO</span>
           <span class="pv-logo-title">Psique <em>e</em> Vida</span>
         </span>
-      </a>
+      </NuxtLink>
 
       <nav class="pv-nav-desktop" aria-label="Navegação principal">
         <a v-for="l in links" :key="l.href" :href="l.href">{{ l.label }}</a>
